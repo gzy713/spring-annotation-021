@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/context"
+       xmlns:content="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/context"
+       xmlns:context="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <!--包扫描的作用  将 @controller   @service @repository  @component   加入ioc  容器中 -->
+
+    <content:component-scan base-package="com.lamp.bean" use-default-filters="false" >
+        <!--如果不开启全扫描 要加上  use-default-filters="false" -->
+      <!--  <content:include-filter type="annotation" expression="com.lamp"></content:include-filter>-->
+    </content:component-scan>
+    <!--使用autowire等-->
+    <content:annotation-config></content:annotation-config>
+
+
+    <bean id="persion" class="com.lamp.bean.Persion">
+        <property name="age" value="15"></property>
+        <property name="name" value="小红"></property>
+    </bean>
+
+</beans>
