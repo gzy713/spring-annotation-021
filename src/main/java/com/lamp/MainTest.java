@@ -63,5 +63,6 @@ public class MainTest {
         for (int i = 0; i <beanNames.length ; i++) {
             System.out.println(beanNames[i]);
         }
+        System.out.println("已修改");
     }
 }
