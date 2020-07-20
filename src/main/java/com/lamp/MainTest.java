@@ -54,6 +54,7 @@ public class MainTest {
             *
             * 结论 之前 要用 @ controller service  respository  component    要下 <context：component-scan>
             * 现在 只需要在  主配置类中写 @componentScan
+            *
         *
         * */
 
