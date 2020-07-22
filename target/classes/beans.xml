@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:content="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/context"
-       xmlns:context="http://www.springframework.org/schema/cache"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
     <!--包扫描的作用  将 @controller   @service @repository  @component   加入ioc  容器中 -->
 
-    <content:component-scan base-package="com.lamp.bean"></content:component-scan>
+    <content:component-scan base-package="com.lamp.bean" use-default-filters="false" >
+        <!--如果不开启全扫描 要加上  use-default-filters="false" -->
+      <!--  <content:include-filter type="annotation" expression="com.lamp"></content:include-filter>-->
+    </content:component-scan>
     <!--使用autowire等-->
     <content:annotation-config></content:annotation-config>
 
 
-    <bean id="persion" class="com.lamp.bean.Persion">
+    <!--
+    @scope   单例或者多利
+    init-method=""  bean的创建以及销毁的方法
+    destroy-method="">
+    value="${}"  取出配置文件中的值   配置文件中的值 最终会被放倒环境变量中
+    -->
+    <!--
+    导入配置文件用
+     <content:property-placeholder location="persion.properties"></content:property-placeholder> ====,获取properties中的值  在主类上添加  @PropertySource(value = {"classpath:/persion.properties"})
+    -->
+
+
+    <bean id="persion" class="com.lamp.bean.Persion" scope="prototype" init-method="" destroy-method="">
         <property name="age" value="15"></property>
         <property name="name" value="小红"></property>
     </bean>
+
+    <!--开启给予注解版的切面功能  不开启注解版 不起作用    @EnableAspectJAutoProxy 在配置类中加入 -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>  ============  @EnableAspectJAutoProxy
 
 </beans>
