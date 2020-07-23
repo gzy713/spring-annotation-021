@@ -2,8 +2,8 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:content="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
     <!--包扫描的作用  将 @controller   @service @repository  @component   加入ioc  容器中 -->
@@ -13,7 +13,7 @@
       <!--  <content:include-filter type="annotation" expression="com.lamp"></content:include-filter>-->
     </content:component-scan>
     <!--使用autowire等-->
-    <content:annotation-config></content:annotation-config>
+    <content:annotation-config></content:annotation-config>     当使用   <content:component-scan  可以移除  ,context:annotation-config
 
 
     <!--
@@ -36,4 +36,6 @@
     <!--开启给予注解版的切面功能  不开启注解版 不起作用    @EnableAspectJAutoProxy 在配置类中加入 -->
     <aop:aspectj-autoproxy></aop:aspectj-autoproxy>  ============  @EnableAspectJAutoProxy
 
+    <!--给予注解的事务支持-->
+    <tx:annotation-driven></tx:annotation-driven>
 </beans>
