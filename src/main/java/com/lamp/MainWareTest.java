@@ -11,7 +11,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 *
 * */
 public class MainWareTest {
-    //第一
     @Test
     public  void  testWare(){
 
