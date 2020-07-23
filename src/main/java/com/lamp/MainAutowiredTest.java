@@ -15,6 +15,7 @@ public class MainAutowiredTest {
     @Test
     public void testAutowired() {
 
+
         ApplicationContext ioc = new AnnotationConfigApplicationContext(MainAutowiredConfig.class);
 
 
